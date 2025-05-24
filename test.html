@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trái tim đập</title>
+    <style>
+        body {
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffe6e6;
+            margin: 0;
+            overflow: hidden;
+        }
+        .heart {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            transform: rotate(-45deg);
+            animation: heartbeat 1s infinite;
+            cursor: pointer;
+        }
+        .heart:before,
+        .heart:after {
+            content: "";
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+        }
+        .heart:before {
+            top: -50px;
+            left: 0;
+        }
+        .heart:after {
+            top: 0;
+            left: 50px;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1) rotate(-45deg); }
+            50% { transform: scale(1.2) rotate(-45deg); }
+            100% { transform: scale(1) rotate(-45deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="heart" id="heart"></div>
+
+    <script>
+        const heart = document.getElementById('heart');
+
+        heart.addEventListener('click', () => {
+            const x = Math.random() * (window.innerWidth - 100);
+            const y = Math.random() * (window.innerHeight - 100);
+            heart.style.left = `${x}px`;
+            heart.style.top = `${y}px`;
+        });
+    </script>
+</body>
+</html>
